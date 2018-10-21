@@ -41,6 +41,7 @@ open class EventView: UIView {
 
   func configure() {
     clipsToBounds = true
+    layer.cornerRadius = 8
     [tapGestureRecognizer, longPressGestureRecognizer].forEach {addGestureRecognizer($0)}
 
     color = tintColor
@@ -72,6 +73,7 @@ open class EventView: UIView {
 
   override open func draw(_ rect: CGRect) {
     super.draw(rect)
+    /*
     let context = UIGraphicsGetCurrentContext()
     context!.interpolationQuality = .none
     context?.saveGState()
@@ -85,6 +87,7 @@ open class EventView: UIView {
     context?.addLine(to: CGPoint(x: x, y: (bounds).height))
     context?.strokePath()
     context?.restoreGState()
+    */
   }
 
   override open func layoutSubviews() {
