@@ -56,6 +56,8 @@ open class EventView: UIView {
       textView.textColor = event.textColor
       textView.font = event.font
     }
+    textView.textContainerInset = .zero
+
     descriptor = event
     backgroundColor = event.backgroundColor
     color = event.color
