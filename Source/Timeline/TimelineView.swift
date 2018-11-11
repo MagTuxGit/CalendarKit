@@ -8,6 +8,8 @@ public protocol TimelineViewDelegate: class {
 
 public class TimelineView: UIView, ReusableView {
 
+  let rightPadding: CGFloat = 8
+    
   public weak var delegate: TimelineViewDelegate?
 
   public weak var eventViewDelegate: EventViewDelegate? {
@@ -209,7 +211,7 @@ public class TimelineView: UIView, ReusableView {
       let y = style.verticalInset + iFloat * style.verticalDiff
       context?.beginPath()
       context?.move(to: CGPoint(x: x, y: y))
-      context?.addLine(to: CGPoint(x: (bounds).width, y: y))
+      context?.addLine(to: CGPoint(x: bounds.width - rightPadding, y: y))
       context?.strokePath()
       context?.restoreGState()
 
@@ -331,7 +333,7 @@ public class TimelineView: UIView, ReusableView {
         let endY = dateToY(event.descriptor.datePeriod.end!)
         let floatIndex = CGFloat(index)
         let x = style.leftInset + floatIndex / totalCount * calendarWidth
-        let equalWidth = calendarWidth / totalCount
+        let equalWidth = (calendarWidth - rightPadding) / totalCount
         event.frame = CGRect(x: x, y: startY, width: equalWidth, height: endY - startY)
       }
     }
